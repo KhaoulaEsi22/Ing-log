@@ -32,12 +32,12 @@ pipeline {
 
     post {
         success {
-            echo '✅ Build successful!'
+            echo ' Build successful!'
         }
         failure {
-            echo '❌ Build failed!'
+            echo 'Build failed!'
             mail to: 'tonemail@gmail.com',
-                 subject: "❌ Build échoué - Hospitalisation Manager",
+                 subject: " Build échoué - Hospitalisation Manager",
                  body: "Le build Jenkins a échoué. Merci de vérifier le code ou les tests."
         }
     }
