@@ -7,7 +7,7 @@ pipeline {
   stages {
       stage('Checkout') {
            steps {
-                  git branch: 'develop', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
+                  git branch: 'main', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
             }
       }
   stage('Build') {
