@@ -12,8 +12,7 @@
 6. [Gestion des versions et des branches Git](#gestion-des-versions-et-des-branches-git)
 7. [Intégration continue (CI/CD)](#intégration-continue-cicd)
 8. [Installation et configuration](#installation-et-configuration)
-9. [Contribuer](#contribuer)
-10. [Licence](#licence)
+
 
 ## Description du projet
 
