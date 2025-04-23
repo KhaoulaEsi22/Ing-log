@@ -28,6 +28,18 @@ pipeline {
                 bat 'mvn test'
             }
         }
+
+        stage('Package') {
+            steps {
+                bat 'mvn package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                bat 'C:\appnutrition\apache-tomcat-11.0.5'
+            }
+        }
     }
 
     post {
@@ -36,8 +48,8 @@ pipeline {
         }
         failure {
             echo 'Build failed!'
-            mail to: 'tonemail@gmail.com',
-                 subject: " Build échoué - Hospitalisation Manager",
+            mail to: 'messaskhaoula@gmail.com',
+                 subject: " Build échoué - OnetoOneShop",
                  body: "Le build Jenkins a échoué. Merci de vérifier le code ou les tests."
         }
     }
