@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'qa', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
+                git branch: 'master', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
 
             }
 
@@ -37,17 +37,14 @@ pipeline {
 
     }
     post {
-        success {
-            echo 'Pipeline exécuté avec succès.'
-
-        }
-
-        failure {
-
-            echo 'Erreur pendant le pipeline.'
-
-        }
-
+       failure {
+            mail to: 'messaskhaoula@gmail.com',
+                 subject: "Échec du build Jenkins",
+                 body: "Le build a échoué sur la branche ${env.BRANCH_NAME}. Merci de vérifier le Jenkins job."
+        }
+        success {
+            echo "Build réussi sur la branche ${env.BRANCH_NAME}."
+        }
     }
 
 }
