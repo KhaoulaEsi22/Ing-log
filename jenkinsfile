@@ -7,7 +7,7 @@ jdk 'JDK 17'
 stages {
 stage('Checkout') {
 steps {
-git branch: 'master', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
+git branch: git branch: 'develop', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
 }
 }
 stage('Build') {
