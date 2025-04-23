@@ -37,7 +37,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'C:\\appnutrition\\apache-tomcat-11.0.5'
+                bat 'C:\\appnutrition\\apache-tomcat-11.0.5\\bin\\startup.bat' 
             }
         }
     }
