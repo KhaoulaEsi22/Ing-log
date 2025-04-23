@@ -1,34 +1,41 @@
 pipeline {
-  agent any
-  tools {
-       maven 'Maven 3.9.9'
-       jdk 'JDK 21'
-  }
-  stages {
-      stage('Checkout') {
-           steps {
-                  git branch: 'main', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
+    agent any
+
+    tools {
+        maven 'Maven 3.9.9'
+        jdk 'JDK 21'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/KhaoulaEsi22/Ing-log.git'
             }
-      }
-  stage('Build') {
-     steps {
-          sh 'mvn clean package'
-     }
-  }
-  stage('Test') {
-     steps {
-        sh 'mvn test'
-     }
-  }
-  }
-  post {
-       failure {
-      mail to: 'messaskhaoula@gmail.com',
-      subject: "Échec du build Jenkins",
-      body: "Le build a échoué sur la branche ${env.BRANCH_NAME}. Merci de vérifier le Jenkins job."
-  }
-  success {
-  echo "Build réussi sur la branche ${env.BRANCH_NAME}."
-  }
-  }
-  }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'mvn clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build successful!'
+        }
+        failure {
+            echo '❌ Build failed!'
+            mail to: 'tonemail@gmail.com',
+                 subject: "❌ Build échoué - Hospitalisation Manager",
+                 body: "Le build Jenkins a échoué. Merci de vérifier le code ou les tests."
+        }
+    }
+}
+
