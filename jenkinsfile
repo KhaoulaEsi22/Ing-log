@@ -1,0 +1,54 @@
+pipeline {
+
+    agent any
+    tools {
+
+        maven 'Maven 3.8.1' 
+
+        jdk 'JDK 17'       
+
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'qa', url: 'https://github.com/KhaoulaEsi22/Ing-log.git'
+
+            }
+
+        }
+        stage('Build') {
+
+            steps {
+
+                sh 'mvn clean install'
+
+            }
+
+        }
+        stage('Test') {
+
+            steps {
+
+                sh 'mvn test'
+
+            }
+
+        }
+
+    }
+    post {
+        success {
+            echo 'Pipeline exécuté avec succès.'
+
+        }
+
+        failure {
+
+            echo 'Erreur pendant le pipeline.'
+
+        }
+
+    }
+
+}
+
